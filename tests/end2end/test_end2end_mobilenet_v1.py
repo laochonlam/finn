@@ -80,7 +80,7 @@ build_dir = os.environ["FINN_BUILD_DIR"]
 test_board = "U250"
 test_platform = alveo_default_platform[test_board]
 test_fpga_part = alveo_part_map[test_board]
-target_clk_ns = 3
+target_clk_ns = 4
 mem_mode = "decoupled"
 large_fifo_ram_style = "ultra"
 extra_fold = 1
@@ -330,3 +330,15 @@ def test_end2end_mobilenet_cppsim():
 
     assert (golden == res_cppsim).all()
     assert np.isclose(golden_prob, res_cppsim_prob).all()
+
+
+if __name__ == '__main__':
+    test_end2end_mobilenet_export()
+    test_end2end_mobilenet_tidy_and_merge_with_preproc()
+    # test_end2end_mobilenet_streamline()
+    # test_end2end_mobilenet_lowering()
+    # test_end2end_mobilenet_convert_to_hls_layers()
+    # test_end2end_mobilenet_folding()
+    # test_end2end_mobilenet_create_dataflow_partition()
+    # test_end2end_mobilenet_cppsim() 
+    # test_lam()
